@@ -1,6 +1,6 @@
 # Ethereum Smart Contract for Earnest Money 
 
-This project demonstrates how an Etheruem Smart Contract can be used to manage `good-faith` earnest money contracts used in real estate transactions.
+This project demonstrates how an Etheruem Smart Contract can be used to manage _good-faith_ earnest money contracts used in real estate transactions.
 When a property buyer enters into a real estate contract, the realtor will typically request that the buyer deposit a sum of money as good faith (typically 1% of the sales price) to help convince the seller that the buyer is serious about the purchase. Currently, this is accomplished by:
 1. The buyer writes a check to the realtor
 2. The realtor holds the check until the seller agrees to the terms of the real estate contract.
@@ -30,22 +30,26 @@ Used Visual Studio Code 1.19.2 for text editing `.sol` files.
 ## Build
 From a command prompt opened to the source directory, run this command:
 
-...`truffle.cmd compile --all`.. 
+`truffle.cmd compile --all` 
 
 ## Tests
 It is recommended to run the tests individually and to restart Ganache after each test.  This will avoid _Out of Gas_ conditions from occurring while running the tests.
 
 From a command prompt opened to the source directory, run this command:
 
-...`truffle.cmd test ./test/earnestmoneyRegister.js`..
-...`truffle.cmd test ./test/earnestmoneyDeposit.js`..
-...`truffle.cmd test ./test/earnestmoneyRelease.js`..
-...`truffle.cmd test ./test/earnestmoneyRefund.js`..
-...`truffle.cmd test ./test/earnestmoneyCancel.js`..
+`truffle.cmd test ./test/earnestmoneyRegister.js`
+
+`truffle.cmd test ./test/earnestmoneyDeposit.js`
+
+`truffle.cmd test ./test/earnestmoneyRelease.js`
+
+`truffle.cmd test ./test/earnestmoneyRefund.js`
+
+`truffle.cmd test ./test/earnestmoneyCancel.js`
 
 ## Migrations
 From a command prompt opened to the source directory, run this command to deploy to the default Ganache instance:
 
-...`truffle.cmd migrate --reset --network ganachedevelopment`..
+`truffle.cmd migrate --reset --network ganachedevelopment`
 
 The network name is defined in `truffle.js`.
