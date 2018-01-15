@@ -1,16 +1,16 @@
 # Ethereum Smart Contract for Earnest Money 
 
 This project demonstrates how an Etheruem Smart Contract can be used to manage _good-faith_ earnest money contracts used in real estate transactions.
-When a property buyer enters into a real estate contract, the realtor will typically request that the buyer deposit a sum of money as good faith (typically 1% of the sales price) to help convince the seller that the buyer is serious about the purchase. Currently, this is accomplished by:
+When a property buyer enters into a real estate contract, the realtor will typically request that a sum of money be deposited as good faith (typically 1% of the sales price) to help convince the seller that the buyer is serious about the purchase. Currently, this is accomplished by the following tasks:
 1. The buyer writes a check to the realtor
 2. The realtor holds the check until the seller agrees to the terms of the real estate contract.
 3. The realtor deposits the check into a bank account.
 4. The realtor writes a check to the closing agent (typically an attorney) and brings it to closing.
 5. The closing agent deposits the check into a bank account.
 
-If, for some reason, the real estate contract becomes invalid, the realtor needs to refund the money to the buyer either by returning the buyer's check or by writing a new check to the buyer.
+If, for some reason, the real estate contract becomes invalid, the realtor needs to refund the money to the buyer either by returning the buyer's check or by writing a new check to the buyer. This process is labor intensive and time consuming.
 
-This manual movement of writing and depositing checks is now automated using a smart contract containing the following functions:
+The manual movement of writing and depositing checks is now automated using a smart contract containing the following functions:
 - **register** -  A realtor registers a new earnest money agreement. A stipend is paid to the contract owner as a usage fee. Ether is taken from the realtor's account and transferred to the contract owner's account.
 - **deposit** - A property buyer deposits funds. Ether is taken from the buyer's account and transferred to the smart contract balance.
 - **release** - A realtor releases funds to the closing agent. Ether is transferred from the contract balance to the closing agent's account.
