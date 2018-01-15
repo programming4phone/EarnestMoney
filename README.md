@@ -1,6 +1,6 @@
 # Ethereum Smart Contract for Earnest Money 
 
-This project demonstrates how an Etheruem Smart Contract can be used to manage _good-faith_ earnest money agreements used in real estate transactions.
+This project demonstrates how an Ethereum Smart Contract can be used to manage _good-faith_ earnest money agreements used in real estate transactions.
 When a property buyer enters into a real estate contract, the realtor will typically request that a sum of money be deposited in good faith (typically 1% of the sales price) to help convince the seller that the buyer is serious about the purchase. Currently, this is accomplished by the following tasks:
 1. The buyer writes a check to the realtor.
 2. The realtor holds the check until the seller agrees to the terms of the real estate contract.
