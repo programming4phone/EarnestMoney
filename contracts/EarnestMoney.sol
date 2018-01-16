@@ -68,7 +68,7 @@ contract EarnestMoney{
     /// @notice Deposit the earnest money sent by the buyer with this transaction   
     /// into the balance of the agreement. Actual funds remain in the contract balance until  
     /// the realtor either releases them to the closing agent or refunds them to the buyer.
-    /// The agreement state must be `Empty` in order to release.
+    /// The agreement state must be `Empty` in order to deposit.
     /// This function fires the `Deposited` event upon successful completion. 
     /// Agreement state is changed to `Funded` restricting further activity to either release or refund.
     /// @param uuid Unique string that identifies this earnest money agreement to the outside world

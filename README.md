@@ -1,16 +1,16 @@
 # Ethereum Smart Contract for Earnest Money 
 
-This project demonstrates how an Ethereum Smart Contract can be used to manage earnest money agreements used in real estate transactions.
-When a property buyer enters into a real estate contract, the realtor will typically request a sum of money be deposited in _good faith_ (typically 1% of the sales price) to help convince the seller that the buyer is serious about the purchase. Currently, this process is accomplished by the following tasks:
+This project demonstrates how to use an Ethereum Smart Contract to manage earnest money agreements associated with real estate transactions.
+When a property buyer enters into a real estate contract, the realtor typically requests a sum of money be deposited in _good faith_ (usually 1% of the sales price) to help convince the seller that the buyer is serious about the purchase. Currently, this process is accomplished by executing the following tasks:
 1. The buyer writes a check to the realtor.
 2. The realtor holds the check until the seller agrees to the terms of the real estate contract.
 3. The realtor deposits the check into a bank account.
-4. The realtor writes a check to the closing agent (typically an attorney) and brings it to closing.
+4. The realtor writes a check to the closing agent (i.e. an attorney) and brings it to closing.
 5. The closing agent deposits the check into a bank account.
 
-If, for some reason, the real estate contract becomes invalid, the realtor needs to refund the buyer's money either by returning the buyer's check or by writing a new check to the buyer. This process is labor intensive and time consuming.
+If, for some reason, the real estate contract becomes invalid, the realtor needs to refund the buyer's money either by returning the buyer's check or by issuing a new check to the buyer. This process is labor intensive and time consuming.
 
-The manual movement of writing and depositing checks is now automated using a smart contract implementing the following functions:
+The manual movement of writing and depositing checks is replaced with an Ethereum smart contract implementing the following functions:
 - **register** -  A realtor registers a new earnest money agreement. A stipend is paid to the contract owner as a usage fee. Ether is taken from the realtor's account and transferred to the contract owner's account.
 - **deposit** - A property buyer deposits funds. Ether is taken from the buyer's account and transferred to the smart contract balance.
 - **release** - A realtor releases funds to the closing agent. Ether is transferred from the contract balance to the closing agent's account.
@@ -21,7 +21,7 @@ Each earnest money agreement is identified by a unique string (UUID). This strin
 
 ## Development stack
 
-This project was developed using Solidity v0.4.18, Truffle v4.0.4, and Ganache.
+This project was developed using Solidity v0.4.18, Truffle v4.0.4, and Ganache v1.0.1.
 
 ## Prerequisites
 
