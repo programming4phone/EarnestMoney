@@ -8,6 +8,8 @@ contract('EarnestMoney', function(accounts) {
     console.log('     - owner address: ' + accounts[4]);
     console.log('     - realtor address: ' + accounts[6]);
     console.log('     - buyer address: ' + accounts[5]);
+    console.log('     - closing agent address: ' + accounts[7]);
+    
     var _instance;
 
     var _depositAmount;
