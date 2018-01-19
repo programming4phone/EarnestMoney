@@ -39,9 +39,7 @@ contract EarnestMoney{
     event Released(string _uuid, address _buyer, address _realtor, address _closingAgent, uint256 _amount);
     event Refunded(string _uuid, address _buyer, address _realtor, uint256 _amount);
     event Cancelled(string _uuid, address _realtor);
-    event RealtorStatus(string uuid, address _buyer, address _realtor, address _closingAgent, Stages _stage, uint256 _amount);
-    event BuyerStatus(string uuid, address _buyer, address _realtor, address _closingAgent, Stages _stage, uint256 _amount);
-
+ 
     modifier onlyOwner() { require(msg.sender == owner); _; }
 
     /// @notice Creates instance of EarnestMoney smart contract on the blockchain.
@@ -201,17 +199,18 @@ contract EarnestMoney{
     /// Uninitialized and cancelled agreements may also be returned.
     /// @param uuid Unique string that identifies this earnest money agreement to the outside world
     /// @dev uuid format is string `123e4567-e89b-12d3-a456-556642440000`
-    function realtorStatus(string uuid) public {
+    function realtorStatus(string uuid) public view 
+        returns (string, address, address, address, Stages, uint256) { 
         address _realtor = msg.sender;
         bytes32 agreementKey = keccak256(uuid);
-        Agreement storage agreement = agreements[agreementKey];
+        Agreement memory agreement = agreements[agreementKey];
         address _agreementRealtor = agreement.realtor;
         Stages _stage = agreement.stage;
         require(_stage == Stages.Empty || _stage == Stages.Cancelled || _agreementRealtor == _realtor);
         address _buyer = agreement.buyer;
         address _closingAgent = agreement.closingAgent;
         uint256 _amount = agreement.amount;
-        RealtorStatus(uuid, _buyer, _agreementRealtor, _closingAgent, _stage, _amount);
+        return (uuid, _buyer, _agreementRealtor, _closingAgent, _stage, _amount);
     }
 
     /// @notice Query the status of an agreement. This function can only be executed by
@@ -220,16 +219,17 @@ contract EarnestMoney{
     /// Uninitialized and cancelled agreements may also be returned.
     /// @param uuid Unique string that identifies this earnest money agreement to the outside world
     /// @dev uuid format is string `123e4567-e89b-12d3-a456-556642440000`
-    function buyerStatus(string uuid) public {
+    function buyerStatus(string uuid) public view 
+        returns (string, address, address, address, Stages, uint256) {
         address _buyer = msg.sender;
         bytes32 agreementKey = keccak256(uuid);
-        Agreement storage agreement = agreements[agreementKey];
+        Agreement memory agreement = agreements[agreementKey];
         address _agreementBuyer = agreement.buyer;
         Stages _stage = agreement.stage;
         require(_stage == Stages.Empty || _stage == Stages.Cancelled || _agreementBuyer == _buyer);
         address _realtor = agreement.realtor;
         address _closingAgent = agreement.closingAgent;
         uint256 _amount = agreement.amount;
-        BuyerStatus(uuid, _agreementBuyer, _realtor, _closingAgent, _stage, _amount);
+        return (uuid, _agreementBuyer, _realtor, _closingAgent, _stage, _amount);
     }
 }

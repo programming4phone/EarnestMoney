@@ -33,58 +33,36 @@ contract('EarnestMoney', function(accounts) {
         return _instance.release(_uuid, accounts[7], {from: accounts[6]}); 
     })
     .then(function(result) {
-        return _instance.realtorStatus(_uuid, {from: accounts[6]}); 
+        return _instance.realtorStatus.call(_uuid, {from: accounts[6]}); 
     })
-    .then(function(result) {
-        var found = false;
-       for (var i = 0; i < result.logs.length; i++) {
-           var log = result.logs[i];
-            if (log.event == "RealtorStatus") {
-                found = true;
-
-                console.log('     - RealtorStatus event log.args.uuid: ' + log.args.uuid);
-                assert.isOk((log.args.uuid == _uuid), "RealtorStatus event incorrect uuid");
-                console.log('     - RealtorStatus event log.args._buyer: ' + log.args._buyer);
-                assert.isOk((log.args._buyer == accounts[5]), "RealtorStatus event incorrect buyer");
-                console.log('     - RealtorStatus event log.args._realtor: ' + log.args._realtor);
-                assert.isOk((log.args._realtor == accounts[6]), "RealtorStatus event incorrect realtor");
-                console.log('     - RealtorStatus event log.args._closingAgent: ' + log.args._closingAgent);
-                assert.isOk((log.args._closingAgent == accounts[7]), "RealtorStatus event incorrect closing agent");
-                console.log('     - RealtorStatus event log.args._stage: ' + log.args._stage);
-                assert.isOk((log.args._stage == 3), "RealtorStatus event incorrect stage");
-                console.log('     - RealtorStatus event log.args._amount: ' + log.args._amount);
-                assert.isOk((log.args._amount == _depositAmount), "RealtorStatus event incorrect amount");
-
-                break;
-           }
-       }
-       assert.isOk(found, "RealtorStatus event did not occur");
+    .then(function(value) {
+        console.log('     - Realtor status uuid: ' + value[0]);
+        assert.isOk((value[0] == _uuid), "Realtor Status incorrect uuid");
+        console.log('     - Realtor status _buyer: ' + value[1]);
+        assert.isOk((value[1] == accounts[5]), "RealtorStatus incorrect buyer");
+        console.log('     - Realtor status _realtor: ' + value[2]);
+        assert.isOk((value[2] == accounts[6]), "Realtor status incorrect realtor");
+        console.log('     - Realtor status _closingAgent: ' + value[3]);
+        assert.isOk((value[3] == accounts[7]), "Realtor status incorrect closing agent");
+        console.log('     - Realtor status _stage: ' + value[4]);
+        assert.isOk((value[4] == 3), "Realtor status incorrect stage");
+        console.log('     - Realtor status _amount: ' + value[5]);
+        assert.isOk((value[5] == _depositAmount), "Realtor status incorrect amount");
        return _instance.buyerStatus(_uuid, {from: accounts[5]});
     })
-    .then(function(result) {
-        var found = false;
-       for (var i = 0; i < result.logs.length; i++) {
-           var log = result.logs[i];
-            if (log.event == "BuyerStatus") {
-             found = true;
-
-             console.log('     - BuyerStatus event log.args.uuid: ' + log.args.uuid);
-             assert.isOk((log.args.uuid == _uuid), "BuyerStatus event incorrect uuid");
-             console.log('     - BuyerStatus event log.args._buyer: ' + log.args._buyer);
-             assert.isOk((log.args._buyer == accounts[5]), "BuyerStatus event incorrect buyer");
-             console.log('     - BuyerStatus event log.args._realtor: ' + log.args._realtor);
-             assert.isOk((log.args._realtor == accounts[6]), "BuyerStatus event incorrect realtor");
-             console.log('     - BuyerStatus event log.args._closingAgent: ' + log.args._closingAgent);
-             assert.isOk((log.args._closingAgent == accounts[7]), "BuyerStatus event incorrect closing agent");
-             console.log('     - BuyerStatus event log.args._stage: ' + log.args._stage);
-             assert.isOk((log.args._stage == 3), "BuyerStatus event incorrect stage");
-             console.log('     - BuyerStatus event log.args._amount: ' + log.args._amount);
-             assert.isOk((log.args._amount == _depositAmount), "BuyerStatus event incorrect amount");
-
-             break;
-           }
-       }
-       assert.isOk(found, "BuyerStatus event did not occur");
+    .then(function(value) {
+        console.log('     - Buyer status uuid: ' + value[0]);
+        assert.isOk((value[0] == _uuid), "BuyerStatus event incorrect uuid");
+        console.log('     - Buyer status _buyer: ' + value[1]);
+        assert.isOk((value[1] == accounts[5]), "Buyer status incorrect buyer");
+        console.log('     - Buyer status _realtor: ' + value[2]);
+        assert.isOk((value[2] == accounts[6]), "Buyer status incorrect realtor");
+        console.log('     - Buyer status _closingAgent: ' + value[3]);
+        assert.isOk((value[3] == accounts[7]), "Buyer status incorrect closing agent");
+        console.log('     - Buyer status _stage: ' + value[4]);
+        assert.isOk((value[4] == 3), "Buyer status incorrect stage");
+        console.log('     - Buyer status _amount: ' + value[5]);
+        assert.isOk((value[5] == _depositAmount), "Buyer status incorrect amount");
     });
   });
 });
