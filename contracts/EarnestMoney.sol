@@ -199,6 +199,7 @@ contract EarnestMoney{
     /// Uninitialized and cancelled agreements may also be returned.
     /// @param uuid Unique string that identifies this earnest money agreement to the outside world
     /// @dev uuid format is string `123e4567-e89b-12d3-a456-556642440000`
+    /// @return Status of the agreement which includes uuid, buyer address, realtor address, closing agent address, stage, and deposit amount
     function realtorStatus(string uuid) public view 
         returns (string, address, address, address, Stages, uint256) { 
         address _realtor = msg.sender;
@@ -219,6 +220,7 @@ contract EarnestMoney{
     /// Uninitialized and cancelled agreements may also be returned.
     /// @param uuid Unique string that identifies this earnest money agreement to the outside world
     /// @dev uuid format is string `123e4567-e89b-12d3-a456-556642440000`
+    /// @return Status of the agreement which includes uuid, buyer address, realtor address, closing agent address, stage, and deposit amount
     function buyerStatus(string uuid) public view 
         returns (string, address, address, address, Stages, uint256) {
         address _buyer = msg.sender;
